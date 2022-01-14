@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小黑云文件分享</title>
+</head>
+<body>
+
+<script>
+    function prom() {
+        var name = prompt("该文件设置了分享密码", ""); //将输入的内容赋给变量 name ，
+
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+        if (name == pass)//如果返回的有内容
+        {}
+        else if (name != pass) {alert("密码错误！");
+        prom();}
+        else//如果返回的有内容
+        {
+            prom()
+        }
+
+    }
+ var pass = '{{ password|safe }}';
+ if (pass != '**')
+ {
+ prom()
+ }
+</script>
+
+<!--16546sdaasf-->
+<!--{{bkbk}}-->
+<h3>用户：{{user}} 向你分享的文件</h3>
+
+<form action="bk">
+    <input type="text" style="font-size:0px; width:0px; height:0px;" name="info" value={{info1}}>
+   <input type="submit" style="position:absolute; left:10px;font-size:20px;background:#4F909D;color:#FFFFFF;" name={{bkbk}} value="后退">
+<!--    &lt;!&ndash;<a href="shangc">上传文件到该目录下 </a> &emsp;&emsp; &emsp;&emsp;&ndash;&gt;-->
+</form>
+
+<br><br><br>
+{% for item in fie_to_b %}
+<form action="wenjcl/" id="b">
+<img src={{item.fetu}} alt="some_text" width="40" height="40" style="position:relative;" > </img>
+<d class="f">
+<a href={{item.url}} id={{item.id}} style="position:relative; top:-5px;font-size:30px; width:2px;">{{ item.name }}</a>
+</d>
+    <input type="submit" style="position:absolute; left:800px;font-size:20px;background:#4F909D;color:#FFFFFF;" name={{item.fe_lj}} value="下载">
+    <input type="submit" style="position:absolute; left:870px;font-size:20px;background:#9F4D95;color:#FFFFFF;" name={{item.fe_lj}} value="保存">
+<!--    <input type="submit" style="position:absolute; left:950px;font-size:20px;background:#F75000;color:#FFFFFF;" name={{item.id}} value="删除">-->
+
+<hr style=" width:1000px;position:relative; left:0px;top:-6px">
+
+</form>
+{% endfor %}
+
+</body>
+</html>

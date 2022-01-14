@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+
+<!--<a href="video_bf_id/{{video_id}}" id={{video_id}} style="position:relative">-->
+    <!--<img border="0" src='/static/images/bf.png' style="position:relative;width:600px;height:400px;left:200px"/>-->
+    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+        <!--&lt;!&ndash;时间：{{item.Length}}分钟&ndash;&gt;-->
+    <!--&lt;!&ndash;<h5 style="position:absolute;width:150px;left:0px;top:20px">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{item.Name}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</h5>&ndash;&gt;-->
+<!--</a>-->
+
+
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>videoJs</title>
+        <link rel="stylesheet" type="text/css" href="/static/js/video5.18.4.js/css/video-js.css">
+        <script src="/static/js/video5.18.4.js/js/video.min.js"></script>
+        <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    </head>
+    <body>
+        <section id="videoPlayer">
+            <video id="example-video" width="800" height="600" class="video-js vjs-default-skin vjs-big-play-centered" poster="">
+                <!--<source src="http://127.0.0.1:9500/test/" type="application/x-mpegURL" id="target">-->
+                 <source src={{bf_url}} type="video/mp4" id="target">
+                <!--<source src="14411.ts" id="target">-->
+            </video>
+        </section>
+        <script type="text/javascript">
+            var player = videojs('example-video', { "poster": "", "controls": "true" }, function() {
+                this.on('play', function() {
+                    console.log('正在播放');
+                });
+                //暂停--播放完毕后也会暂停
+                this.on('pause', function() {
+                    console.log("暂停中")
+                });
+                // 结束
+                this.on('ended', function() {
+                    console.log('结束');
+                })
+
+            });
+        </script>
+    </body>
+</html>

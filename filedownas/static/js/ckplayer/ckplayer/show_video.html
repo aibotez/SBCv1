@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head> 
+<meta content="text/html;charset=UTF-8">
+<title>小黑云视频预览</title> 
+<link href="/static/js/video6.6.2.js/css/video-js.min.css" rel="stylesheet">
+<script src="/static/js/video6.6.2.js/js/video.min.js"></script>
+
+
+<script type="text/javascript" src="ckplayer.js"></script>
+<style type="text/css">body{margin:0;padding:0px;font-family:"Microsoft YaHei",YaHei,"微软雅黑",SimHei,"黑体";font-size:14px}</style>
+
+
+</head>
+<body>
+{{gaih_fe1}}
+<!--<div style="text-align:center;">-->
+<!--<video width="800" height="600" preload="none"  controls="controls" autoplay="autoplay" poster={{rehtspsz}}>-->
+<!--&lt;!&ndash;  <video width="800" height="600" preload="none"  controls="controls">&ndash;&gt;-->
+<!--&lt;!&ndash;  <source src="/static/cc/12.ogg" type="video/ogg">&ndash;&gt;-->
+<!--  <source src={{gaih_fe1}} type="video/mp4">-->
+<!--&lt;!&ndash;  <source src="/static/cc/12.webm" type="video/webm">&ndash;&gt;-->
+<!--  <object data={{gaih_fe1}} width="800" height="600" >-->
+<!--    <embed width="800" height="600" autoplay="autoplay" src={{gaih_fe1}}>-->
+<!--  </object>-->
+<!--</video>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+<div id="video" style="width:600px;height:400px;"></div>
+<script type="text/javascript">
+	var videoObject = {
+		container:'#video',
+		variable:'player',
+		autoplay:true,
+		video:'rzdf.mp4'
+	};
+	var player=new ckplayer(videoObject);
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
+
+

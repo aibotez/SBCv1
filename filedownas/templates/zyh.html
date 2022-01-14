@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZY</title>
+</head>
+
+<style>
+    .hf{width:1000px}
+    .hf div{
+    float:left;
+    margin-left:50px;
+    margin-top:30px;
+    }
+
+    }
+</style>
+
+<body>
+
+
+
+<div style="position:absolute;left:100px">
+<form action="page_cz">
+     <input type="submit" style="position:relative; left:500px;top:10px;width:80px; height:40px;background:#7B7B7B;color:#FFFFFF; " name='next' value="下一页">
+    <input type="text" style="position:relative;left:200px;top:10px;" name="cur_page" value={{cur_page}}>
+    <input type="submit" style="position:relative; left:-100px;top:10px;width:80px; height:40px;background:#7B7B7B;color:#FFFFFF;" name='pre' value="上一页">
+</form>
+</div>
+
+
+
+<script>
+    var indx=1
+</script>
+<div class="hf" style="position:relative;width:1000px;left:40px;top:40px">
+{% for item in videos_info %}
+<div>
+<a href="video_id/{{item.ID}}" id={{item.ID}} style="position:relative">
+    <img border="0" src={{item.CoverImgUrl}} style="position:relative;width:260px;height:170px"/>
+    <!--<br>-->
+        <!--时间：{{item.Length}}分钟-->
+    <!--<h5 style="position:absolute;width:150px;left:0px;top:20px">-->
+        <!--{{item.Name}}-->
+    <!--</h5>-->
+</a>
+    <br>
+        时间：{{item.Length}}分钟
+    <h4 style="position:relative;width:260px;height:30px;left:0px;top:-10px">
+        {{item.Name}}
+    </h4>
+
+</div>
+<!--<script>-->
+<!--var dat = {{ item|safe }};-->
+<!--if (indx % 3 == 0)-->
+<!--{-->
+<!--alert(dat.CoverImgUrl)-->
+<!--document.getElementById('a').innerHTML=document.getElementById('a').innerHTML+"<br><br>"-->
+<!--}-->
+<!--indx = indx+1-->
+<!--</script>-->
+{% endfor %}
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+<script>
+            function ddelCookie(name)//删除cookie
+            {
+                var exp = new Date();
+                exp.setTime(exp.getTime() - 1);
+                var cval=getCookie(name);
+                if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+            }
+function clearCookie(name) {
+    setCookie(name, "", -1);
+}
+function delCookie(name)
+{
+   document.cookie = name+"=;expires="+(new Date(0)).toGMTString();
+}
+
+    ddelCookie('cur_id')
+    clearCookie('cur_id')
+    delCookie('cur_id')
+    </script>
+
+
+
+
+
+<h1>文件传输</h1>
+<form action="dlzc">
+Name:<br>
+<input type="text" name="name" value="">
+<br>
+password:<br>
+<input type="text" name="password" value="">
+<br><br>
+<input type="submit" name="dengl" value="登录">
+    <input type="submit" name="zhuce" value="注册">
+</form>
+
+
+
+</body>
+</html>

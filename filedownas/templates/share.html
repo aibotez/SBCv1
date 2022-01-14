@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小黑云—Share</title>
+</head>
+<body>
+<h1>文件分享</h1>
+
+<form action="/share/">
+    <input type="text" style="position:absolute; left:0px;top:0px;font-size:0px;background:#0000C6;color:#FFFFFF;" name="user" value={{share_user_id}}>
+<br>
+    <h2>你要分享的文件：</h2>
+<input type="text" style="position:absolute; left:200px;top:123px;width:700px;font-size:30px;;color:#0000C6;" name="share_lj" value={{share_lj}}>
+    <br>
+     <h4 style="position:absolute; left:8px;top:198px;color:#0000C6;">时间限制：</h4>
+<input type="text" style="position:absolute; left:90px;top:217px;width:200px;font-size:20px;color:#0000C6;" name="share_time_limt" value=''>
+    <h4 style="position:absolute; left:350px;top:198px;color:#0000C6;">分享密码：</h4>
+<input type="text" style="position:absolute; left:430px;top:217px;width:200px;font-size:20px;color:#0000C6;" name="share_pass" value=''>
+ <h4 style="position:absolute; left:8px;top:247px;color:#0000C6;">指定用户：</h4>
+<input type="text" style="position:absolute; left:90px;top:267px;width:200px;font-size:20px;color:#0000C6;" name="share_user_limt" value=''>
+
+<input type="submit" style="position:absolute; left:150px;top:22px;font-size:20px;width:120px; height:40px;background:#C4C400;color:#FFFFFF;" value="分享">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<!--<input type="text" name="cur_lj" value= {{lj}}>&emsp;&emsp;&emsp;&emsp;-->
+</form>
+
+<h5 style="position:absolute; left:8px;top:300px;color:#0000C6;">
+    时间限制如果直接填入数字，则会以小时为单位，如 0.5为半小时后过期，如果限制到某一天或某一时刻，时间用 "-" 分割,如： 14-20，为当天2点20后过期；3-1-14-20，为当年3月1号2点20过期
+    或者 2020-2-9-14-20；不可写成 2020-2-9；也可以直接写 2天或2月或2年，即2天、2月、2年后的这个时刻过期
+    <br> 不填默认为不限制时间
+    <br> 密码为分享后查看该分享的密码；不填默认无密码
+</h5>
+
+<!--{{share_user_id}}-->
+
+<!--{{share_lj}}-->
+
+</body>
+</html>

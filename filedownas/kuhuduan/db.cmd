@@ -1,0 +1,1 @@
+pyinstaller -w khd.py -i HY.ico

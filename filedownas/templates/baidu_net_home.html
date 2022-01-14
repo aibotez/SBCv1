@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小黑云-百度云下载</title>
+
+        <style type="text/css">
+.container{
+   width:450px;
+   border:1px solid #6C9C2C;
+   height:25px;
+ }
+#bar{
+   background:#95CA0D;
+   float:left;
+   height:100%;
+   text-align:center;
+   line-height:150%;
+ }
+</style>
+    <script type="text/javascript">
+  function run(jdt){
+        var bar = document.getElementById("bar");
+        var total = document.getElementById("total");
+    bar.style.width=parseInt(bar.style.width) + 10 + "%";
+    bar.style.width=jdt;
+    total.innerHTML = bar.style.width;
+    total.innerHTML='  '+bar.style.width
+    if(bar.style.width == "100%"){
+      <!--window.clearTimeout(timeout);-->
+      return;
+    }
+    <!--var timeout=window.setTimeout("run()",10000);-->
+  }
+    <!--window.onload = function(){-->
+
+       <!--run();-->
+    <!--}-->
+</script>
+<script>
+    var user_id = '{{ user_id|safe }}';
+</script>
+
+    <script>
+function loadXMLDoc(pd)
+{
+
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			fx=xmlhttp.responseText;
+			if (fx == "{}")
+			{
+			    ts = "下载完成"
+			    document.getElementById("myDiv").innerHTML=ts;
+			    run("100%")
+			    document.getElementById("urls").innerHTML=" "
+			    window.clearTimeout(timeout);
+			}
+			else{
+			    var url_xl=JSON.parse(fx).share_url;
+			    document.getElementById("urls").innerHTML=" "
+			    for(j = 0,len=url_xl.length; j < len; j++) {
+                                document.getElementById("urls").innerHTML=document.getElementById("urls").innerHTML+url_xl[j]+"<br>";
+                                                           }
+			    var jdd=JSON.parse(fx).jd;
+			    var ts=JSON.parse(fx).ts;
+			    if (ts == "下载完成"){run("100%")}
+			    else {run(jdd)}
+			    document.getElementById("myDiv").innerHTML=ts;
+			    }
+			<!--var jdd=JSON.parse(fx).jd;-->
+			<!--var ts=JSON.parse(fx).ts;-->
+			<!--if (ts == "下载完成"){run("100%")}-->
+			<!--else {run(jdd)}-->
+			<!--document.getElementById("myDiv").innerHTML=ts;-->
+		}
+	}
+	<!--var url_value = document.getElementById("share_url").value;-->
+	<!--var pass_value = document.getElementById("password").value;-->
+
+	if(pd == 1){
+		var url_value = document.getElementById("share_url").value;
+	    var pass_value = document.getElementById("password").value;
+		document.getElementById("share_url").value='';
+	    document.getElementById("password").value='';
+	}
+	else{
+		var url_value = "";
+	    var pass_value = "";
+	}
+
+	var url = "/baidu_net_ss/?url="+url_value+"&&pass="+pass_value+"&&user_id="+user_id
+	xmlhttp.open("GET", url,true);
+	xmlhttp.send();
+	document.getElementById("share_url").value='';
+	document.getElementById("password").value='';
+
+	var timeout=window.setTimeout("loadXMLDoc(0)",1000);
+
+
+}
+</script>
+
+</head>
+<body>
+
+<div style="position:absolute; left:300px;top:105px;">
+分享链接： <input id="share_url" style="width:300px;" type="text" name="share_url" value= ''>
+    <br><br>
+提取码： &emsp;<input id="password" style="width:100px;" type="text" name="password" value= ''>没有提取码为空
+</div>
+
+<button style="position:absolute; left:300px;top:180px;" type="button" onclick="loadXMLDoc(1)">保存至小黑云</button>
+
+<div style="position:absolute; left:300px;top:300px;" id="myDiv">
+    <h4> </h4>
+</div>
+
+
+<div style="position:absolute; left:300px;top:360px;">
+    下载队列：
+</div>
+
+<div style="position:absolute; left:300px;top:380px;" id="urls">
+    <h4> </h4>
+</div>
+
+
+
+
+<div class="container" style="position:absolute; left:300px;top:250px;">
+<div id="bar" style="width:0%;heiht:20px"></div>
+</div>
+<span id="total" style="position:absolute; left:500px;top:280px;"></span>
+
+
+
+</body>
+</html>

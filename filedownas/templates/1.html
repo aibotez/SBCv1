@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NAS</title>
+    <link rel="stylesheet" href="/static/css/gd/css/liMarquee.css">
+<script src="/static/css/gd/js/jquery-1.8.3.min.js"></script>
+<script src="/static/css/gd/js/jquery.liMarquee.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+<style>
+.f a{height:20px;width:500px;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+
+<form action="down_khd/">
+    <input type="submit" style="position:absolute; left:650px;top:30px;font-size:20px;width:130px; height:40px;background:#C4C400;color:#FFFFFF;" value="下载客户端">
+ </form>
+
+
+<form action="user_cz">
+    <img src="/static/images/syyl1.jpg" alt="some_text" width="130" height="30" style="position:absolute;left:400px;top:30px;" > </img>
+    <img src="/static/images/yyyl1.jpg" alt="some_text" width={{rl_view}} height="30" style="position:absolute;left:400px;top:30px;" > </img>
+     <input type="submit" style="position:absolute; left:870px;top:30px;font-size:20px;width:80px; height:40px;background:#7B7B7B;color:#FFFFFF; " name='zx' value="注销">
+    <input type="submit" style="position:absolute; left:800px;top:30px;font-size:20px;width:70px; height:40px;background:#7B7B7B;color:#FFFFFF;" name={{bkbl}} value="改密码">
+</form>
+
+
+<form action="bk">
+    <h2>当前用户：{{ zh }}</h2>
+    {{yhzyl}}
+    <input type="submit" style="position:absolute; left:0px;top:95px;font-size:30px;background:#0000C6;color:#FFFFFF;" name={{bkbl}} value="<--后退"> &emsp;&emsp; &emsp;&emsp;
+    <!--<a href="shangc">上传文件到该目录下 </a> &emsp;&emsp; &emsp;&emsp;-->
+</form>
+
+
+<form action="baidunet/" style="position:absolute; left:650px;top:105px;">
+    <input type="submit" style="font-size:20px;width:80px; height:40px;background:#C4C400;color:#FFFFFF;" name={{bkbl}} value="百度云"> &emsp;&emsp; &emsp;&emsp;
+    <!--<a href="shangc">上传文件到该目录下 </a> &emsp;&emsp; &emsp;&emsp;-->
+</form>
+
+<form action="/netcz/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<br>
+    <input type="text" style="font-size:0px; width:0px; height:0px;" name="id_r" value={{bkbl}}>
+        <input type="file" style="position:absolute; left:150px;top:105px;font-size:20px;width:100px; height:40px;" name="filename" >
+        <input type="submit" style="position:absolute; left:800px;top:105px;font-size:20px;width:80px; height:40px;background:#C4C400;color:#FFFFFF;" value="上传">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;当前路径： <input type="text" name="cur_lj" value= {{lj}}>&emsp;&emsp;&emsp;&emsp;
+        <input type="submit" style="position:absolute; left:870px;top:105px;font-size:20px;width:80px; height:40px;background:#C4C400;color:#FFFFFF;" name="newfile" value="新建">
+</form>
+
+    <hr style=" width:1000px;height:10px;background:#E6E6E6;position:relative; left:0px;">
+    <hr>
+<br>
+{% for item in file_all %}
+
+<form action="wenjcl" id="b">
+<img src={{item.wjtb}} alt="some_text" width="40" height="40" style="position:relative;" > </img>
+<d class="f">
+<a href="s/xiaz/{{ item.id }}" id={{item.id}} style="position:relative; top:-5px;font-size:30px; width:2px;">{{ item.name }}</a>
+</d>
+
+    <input type="text" placeholder={{item.name}} style="position:absolute; left:600px;font-size:20px; width:100px; height:30px; background:#E6E6E6;" name="newname" >
+    <input type="submit" style="position:absolute; left:710px;font-size:20px;background:#5B5B5B;color:#FFFFFF;" name={{item.id}} value="重命名">
+    <input type="submit" style="position:absolute; left:800px;font-size:20px;background:#4F909D;color:#FFFFFF;" name={{item.id}} value="下载">
+    <input type="submit" style="position:absolute; left:870px;font-size:20px;background:#9F4D95;color:#FFFFFF;" name={{item.id}} value="分享">
+    <input type="submit" style="position:absolute; left:950px;font-size:20px;background:#F75000;color:#FFFFFF;" name={{item.id}} value="删除">
+
+<hr style=" width:1000px;position:relative; left:0px;top:-6px">
+
+</form>
+
+
+{% endfor %}
+
+<script>
+    function setCookie(c_name,value,expiredays)
+{
+<!--var Days = 30;-->
+var exdate=new Date()
+exdate.setDate(exdate.getDate()+expiredays)
+<!--expdate.setTime(exdate.getTime() + Days*24*60*60*1000);-->
+document.cookie=c_name+ "=" +escape(value)+
+((expiredays==null) ? "" :
+";expires="+exdate.toGMTString())
+}
+var s2 = '{{ bkbl|safe }}';
+//alert(s2)
+setCookie('cur_id',s2,30);
+
+</script>
+
+<!--<script>-->
+<!--var s2 = {{ file_all|safe }};-->
+<!--var run_idx = 0-->
+<!--var timer-->
+<!--var id_idx-->
+<!--var i =0-->
+<!--var L = 15-->
+<!--var idx = 0-->
+
+
+
+<!--function strLen(str) {-->
+<!--  var len = 0;-->
+<!--  for (var i=0; i<str.length; i++) {-->
+<!--    if (str.charCodeAt(i)>127 || str.charCodeAt(i)==94) {-->
+<!--       len += 2;-->
+<!--     } else {-->
+<!--       len ++;-->
+<!--     }-->
+<!--   }-->
+<!--  return len;-->
+<!--}-->
+
+<!--for (var j=0;j<s2.length;j++)-->
+<!--{-->
+<!--    var str = s2[j].id-->
+<!--&lt;!&ndash;    alert(str.charAt(str.length-1))&ndash;&gt;-->
+<!--    var str1=str.charAt(str.length-1)-->
+<!--    var bl_idx = 'idx'+str1-->
+<!--    var bl_pd = 'pd'+str1-->
+<!--    window[bl_idx] = 0-->
+<!--    window[bl_pd] = 0-->
+<!--}-->
+<!--function fn_look(str_id,pd){-->
+<!--    var str_idd = str_id.charAt(str_id.length-1)-->
+<!--    if (pd == 'idx')-->
+<!--    {-->
+<!--        return eval('idx'+str_idd)-->
+<!--    }-->
+<!--    else {-->
+<!--        return eval('pd'+str_idd)-->
+<!--    }-->
+<!--}-->
+<!--function fn_ys(str_id,pd,num){-->
+<!--    var str_idd = str_id.charAt(str_id.length-1)-->
+<!--    if (pd == 'idx')-->
+<!--    {-->
+<!--        return window['idx'+str_idd] =num-->
+<!--    }-->
+<!--    else {-->
+<!--        return window['pd'+str_idd] =num-->
+<!--    }-->
+<!--}-->
+<!--timer = setInterval(run,150);-->
+<!--function run(){-->
+<!--var txt= s2[run_idx].name-->
+<!--&lt;!&ndash;alert(txt.indexOf('.'))&ndash;&gt;-->
+<!--if (txt.length > 20)-->
+<!--    {-->
+<!--    id_idx = s2[run_idx].id-->
+<!--&lt;!&ndash;    run_idx=run_idx+1&ndash;&gt;-->
+<!--    var tag = document.getElementById(id_idx);-->
+<!--    var content = tag.innerText;-->
+
+<!--        var f = content.charAt(0);-->
+<!--        var idx = fn_look(id_idx,'idx')-->
+
+<!--        if (idx + L  < txt.length && fn_look(id_idx,'pd') == 0)-->
+<!--        {-->
+<!--            idx = idx +1-->
+<!--            fn_ys(id_idx,'idx',idx)-->
+
+<!--            i = 0-->
+<!--        }-->
+<!--        else {-->
+
+<!--            idx = idx -1-->
+<!--            fn_ys(id_idx,'idx',idx)-->
+<!--&lt;!&ndash;            alert(idx)&ndash;&gt;-->
+<!--            i = 1-->
+<!--            fn_ys(id_idx,'pd',1)-->
+<!--            if (idx == -1)-->
+<!--            {i=0;-->
+<!--            fn_ys(id_idx,'pd',0)-->
+<!--&lt;!&ndash;            alert(fn_look(id_idx,'pd'))&ndash;&gt;-->
+<!--            idx = 0;-->
+<!--            fn_ys(id_idx,'idx',0)-->
+<!--            }-->
+<!--        }-->
+<!-- var new_content=txt.substring(idx,idx+L);-->
+<!--        tag.innerText = new_content;-->
+<!--&lt;!&ndash;         tag.innerHTML= new_content;&ndash;&gt;-->
+
+<!--            }-->
+<!--run_idx=run_idx+1-->
+<!--if (run_idx == s2.length)-->
+<!--{run_idx=0}-->
+<!--}-->
+
+<!--</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

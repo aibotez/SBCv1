@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fehome</title>
+</head>
+<body>
+
+<form action="/shangc/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>
+        <h2>上传文件：</h2>
+        <br>
+        <input type="file" name="filename">
+    </p>
+    <p>
+        <input type="text" name="towho" value="传输给谁">
+        <input type="submit" value="上传">
+    </p>
+</form>
+<br><br>
+<h2>传输给你的文件：</h2>
+    <ul>
+        {% for item in file_all %}
+            <li>
+                <a href="/xiaz/{{ item.id }}">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

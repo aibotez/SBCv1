@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="UTF-8">
+        <title>videoJs</title>
+        <link rel="stylesheet" type="text/css" href="/static/js/video5.18.4.js/css/video-js.css">
+        <script src="/static/js/video5.18.4.js/js/video.min.js"></script>
+        <!--<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>-->
+
+        <!--<style type="text/css">-->
+<!--.container{-->
+   <!--width:450px;-->
+   <!--border:1px solid #6C9C2C;-->
+   <!--height:25px;-->
+ <!--}-->
+<!--#bar{-->
+   <!--background:#95CA0D;-->
+   <!--float:left;-->
+   <!--height:100%;-->
+   <!--text-align:center;-->
+   <!--line-height:150%;-->
+ <!--}-->
+<!--</style>-->
+<!--<script type="text/javascript">-->
+  <!--function run(){-->
+        <!--var bar = document.getElementById("bar");-->
+        <!--var total = document.getElementById("total");-->
+    <!--bar.style.width=parseInt(bar.style.width) + 10 + "%";-->
+    <!--bar.style.width="50%";-->
+    <!--total.innerHTML = bar.style.width;-->
+    <!--total.innerHTML='正在缓冲  '+bar.style.width-->
+    <!--if(bar.style.width == "100%"){-->
+      <!--window.clearTimeout(timeout);-->
+      <!--return;-->
+    <!--}-->
+    <!--var timeout=window.setTimeout("run()",100);-->
+  <!--}-->
+    <!--window.onload = function(){-->
+
+       <!--&lt;!&ndash;run();&ndash;&gt;-->
+    <!--}-->
+<!--</script>-->
+    </head>
+
+    <body>
+
+    <!--<a href="video_bf_id/{{video_id}}" id={{video_id}} style="position:relative">-->
+    <!--<img border="0" src='/static/images/bf.png' style="position:relative;width:600px;height:400px;left:200px"/>-->
+    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+        <!--&lt;!&ndash;时间：{{item.Length}}分钟&ndash;&gt;-->
+    <!--&lt;!&ndash;<h5 style="position:absolute;width:150px;left:0px;top:20px">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{item.Name}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</h5>&ndash;&gt;-->
+<!--</a>-->
+
+
+
+
+
+
+        <section id="videoPlayer">
+            <video id="example-video" width="600" height="300" class="video-js vjs-default-skin vjs-big-play-centered" poster="">
+                <!--<source src="http://127.0.0.1:9500/test/" type="application/x-mpegURL" id="target">-->
+                 <source src={{bf_url}} type="video/mp4" id="target">
+                <!--<source src="14411.ts" id="target">-->
+            </video>
+        </section>
+        <script type="text/javascript">
+            var player = videojs('example-video', { "poster": "", "controls": "true" }, function() {
+                this.on('play', function() {
+                    console.log('正在播放');
+                });
+                //暂停--播放完毕后也会暂停
+                this.on('pause', function() {
+                    console.log("暂停中")
+                });
+                // 结束
+                this.on('ended', function() {
+                    console.log('结束');
+                })
+
+            });
+        </script>
+
+
+
+
+<form action="zyh_down/">
+    <input type="submit" style="position:absolute; left:0px;top:400px;font-size:30px;background:#0000C6;color:#FFFFFF;" name={{video_id}} value="下载"> &emsp;&emsp; &emsp;&emsp;
+    <!--<a href="shangc">上传文件到该目录下 </a> &emsp;&emsp; &emsp;&emsp;-->
+</form>
+
+
+  <!--<div class="container">-->
+   <!--<div id="bar" style="width:0%;"></div>-->
+  <!--</div>-->
+  <!--<span id="total"></span>-->
+
+
+    </body>
+</html>
